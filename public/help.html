@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Healthcare Locator</title>
+    <link rel="stylesheet" href="help.css">
+</head>
+
+<body>
+    <header class="container">
+        <input type="text" placeholder="Search here">
+        <nav>
+            <ul>
+                <li><a href="/index.html">Home</a></li>
+                <li><a href="/about.html">About</a></li>
+                <li><a href="/contact.html">Contact</a></li>
+                <li><a href="/help.html">Help</a></li>
+                <li><a href="login.html">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+    <header class="header">
+        <h1>Find Healthcare Services Near You</h1>
+        <p>Get information about hospitals, pharmacies, and emergency support in your area.</p>
+    </header>
+
+    <main class="content">
+        <div class="search-section">
+            <h2>Enter Your State</h2>
+            <input type="text" id="state-input" placeholder="Enter your state">
+            <button onclick="getHealthcareInfo()">Search</button>
+        </div>
+
+        <div class="results-section">
+            <h2>Results for <span id="state-name"></span></h2>
+            <div id="hospital-list">
+                <h3>Hospitals</h3>
+                <ul id="hospitals"></ul>
+            </div>
+
+            <div id="pharmacy-list">
+                <h3>Pharmacies</h3>
+                <ul id="pharmacies"></ul>
+            </div>
+
+            <div id="emergency-support">
+                <h3>Emergency Support</h3>
+                <p>Call 108 for immediate assistance in case of emergencies.</p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2023 Healthcare Locator. All Rights Reserved.</p>
+    </footer>
+
+    <script>function getHealthcareInfo() {
+        const state = document.getElementById("state-input").value;
+        document.getElementById("state-name").innerText = state;
+    
+        const hospitals = [
+            { name: "General Hospital", address: "123 Main St" },
+            { name: "City Hospital", address: "456 Elm St" }
+        ];
+    
+        const pharmacies = [
+            { name: "Main Pharmacy", address: "789 Oak St" },
+            { name: "Wellness Pharmacy", address: "101 Pine St" }
+        ];
+    
+        const hospitalList = document.getElementById("hospitals");
+        hospitalList.innerHTML = '';
+        hospitals.forEach(hospital => {
+            const listItem = document.createElement("li");
+            listItem.textContent = `${hospital.name} - ${hospital.address}`;
+            hospitalList.appendChild(listItem);
+        });
+    
+        const pharmacyList = document.getElementById("pharmacies");
+        pharmacyList.innerHTML = '';
+        pharmacies.forEach(pharmacy => {
+            const listItem = document.createElement("li");
+            listItem.textContent = `${pharmacy.name} - ${pharmacy.address}`;
+            pharmacyList.appendChild(listItem);
+        });
+  
+    }
+    </script>
+</body>
+
+</html>
